@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <h3>Register  Here</h3>
+            <h3 align="center">Register  Here</h3>
             <form action="{{ route('register.post') }}" method="POST">
                 @csrf
                 <div class="form-group">
@@ -16,15 +16,15 @@
 
                 <div class="form-group">
                     <label for="mobile">Mobile</label>
-                    <input type="tel" class="form-control" id="mobile" name="mobile" placeholder="Enter Mobile Nu">
+                    <input type="tel" class="form-control" id="mobile" name="mobile" placeholder="Enter Mobile No">
                     @if($errors->has('mobile'))
                         <div class="error text-danger my-1">{{ $errors->first('mobile') }}</div>
                     @endif
                 </div>
                 <div class="form-group">
-                    <label for="gendrer">Gender</label>
+                    <label for="gender">Gender</label>
                     <select name="gender" id="gender" class="form-control">
-                        <option selected disabled>Select gender</option>
+                        <option selected disabled>Select Gender</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>
@@ -34,7 +34,7 @@
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="text" class="form-control" id="email" name="email" placeholder="Enter email">
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Enter Email">
                     @if($errors->has('email'))
                         <div class="error text-danger my-1">{{ $errors->first('email') }}</div>
                     @endif

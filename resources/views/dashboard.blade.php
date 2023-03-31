@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 @extends('master')
 @section('master-space')
 <div class="container">
@@ -22,15 +25,15 @@
                         @php $i = 1 @endphp
                         @if(count($users))
                         @foreach($users as $user)
-                            <tr>
-                                <td>{{ $i++ }}</td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ $user->gender }}</td>
-                                <td>{{ $user->mobile }}</td>
-                                <td><button type="button" data-id="{{ $user->id }}" data-name="{{ $user->name }}" data-email="{{ $user->email }}" data-gender="{{ $user->gender }}" data-mobile="{{ $user->mobile }}" class="btn btn-info btn-sm edit" data-toggle="modal" data-target="#edit_modal">Edit</button></td>
-                                <td><button type="button" data-id="{{ $user->id }}" class="btn btn-danger btn-sm delete" data-toggle="modal" data-target="#delete_modal">Delete</button></td>
-                            </tr>
+                        <tr>
+                            <td>{{ $i++ }}</td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->gender }}</td>
+                            <td>{{ $user->mobile }}</td>
+                            <td><button type="button" data-id="{{ $user->id }}" data-name="{{ $user->name }}" data-email="{{ $user->email }}" data-gender="{{ $user->gender }}" data-mobile="{{ $user->mobile }}" class="btn btn-info btn-sm edit" data-toggle="modal" data-target="#edit_modal">Edit</button></td>
+                            <td><button type="button" data-id="{{ $user->id }}" class="btn btn-danger btn-sm delete" data-toggle="modal" data-target="#delete_modal">Delete</button></td>
+                        </tr>
                         @endforeach
                         @else
                         <tr align="center">
@@ -43,20 +46,18 @@
         </div>
     </div>
 </div>
-    <!-- This is not working -->
-    
-<!-- @if(Session::has('msg'))
-    <div class="alert alert-success alert-dismissible">
-        <span class="close" data-dismiss="alert">&times;</span>
-        {{ Session::get('msg') }}
-    </div>
-    <script>
-        swal("Message", "{{ Session::get('msg') }}","success",{
-            button: true,
-            button: "ok"
-        });
-    </script>
-@endif -->
+
+@if(Session::has('msg'))
+<!-- <div class="alert my-2 alert-success alert-dismissible  fade show">
+                <span class="close">&times;</span>
+                {{ Session::get('msg') }}
+            </div> -->
+<script>
+    swal("Success", "{{ Session::get('msg') }}", "success", {
+        button: true,
+    });
+</script>
+@endif
 
 <!-- Edit Student Modal -->
 <div class="modal fade" id="edit_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -108,20 +109,20 @@
                 <div class="modal-body">
                     <input type="hidden" name="del_id" id="del_id">
                     <p>Are you sure to want to Delete this Student?</p>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </div>
                 </div>
             </div>
-        </div>
     </form>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('#register_table').DataTable();
 
-            // Edit
+        // Edit
         $('.edit').click(function(e) {
             var id = $(this).attr('data-id');
             var name = $(this).attr('data-name');
@@ -134,7 +135,7 @@
             $('#gender').val(gender);
             $('#mobile').val(mobile);
         });
-        
+
         $("#edit_form_modal").submit(function(event) {
             event.preventDefault();
             var formdata = $(this).serialize();
@@ -142,15 +143,19 @@
                 url: "{{ route('edit.record') }}",
                 type: "post",
                 data: formdata,
-                beforeSend:function(){
+                beforeSend: function() {
                     $('#edit_btn').html('Updating...');
-                    $('#edit_btn').attr('disabled',true);
+                    $('#edit_btn').attr('disabled', true);
                 },
                 success: function(response) {
+                    // console.log(response);
+                    var message = response.msg;
+
                     if (response.status == true) {
-                        window.location.reload();
                         $('#edit_btn').html('Save');
-                        $('#edit_btn').attr('disabled',false);
+                        $('#edit_btn').attr('disabled', false);
+                        $('#edit_form_modal').modal('hide');
+                        window.location.reload();
                     } else {
                         alert(response.msg);
                     }
@@ -171,6 +176,7 @@
                 type: "post",
                 data: formdata,
                 success: function(response) {
+                    console.log(response);
                     if (response.status == true) {
                         window.location.reload();
                     } else {

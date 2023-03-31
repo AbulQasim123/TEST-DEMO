@@ -53,7 +53,7 @@ class UserController extends Controller
 
         // dd($credenttial);
         if (Auth::attempt($credenttial)) {
-            return redirect('dashboard');
+            return redirect('dashboard')->with('msg', 'Welcome '. Auth::user()->name);
         } else {
             return redirect('/login')->with('error', 'Invalid credential');
         }
@@ -74,7 +74,7 @@ class UserController extends Controller
     {
         $request->session()->flush();
         Auth::logout();
-        return redirect('login');
+        return redirect('login')->with('msg', 'Logout successfully');
     }
     
 
