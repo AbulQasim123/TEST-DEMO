@@ -29,7 +29,6 @@ Route::controller(UserController::class)->group(function(){
     Route::post('login-post', 'loginPost')->name('login.post');
     Route::get('dashboard', 'Dashboard');
     Route::get('logout', 'Logout')->name('logout');
-
     Route::post('edit-record', 'editRecord')->name('edit.record');
     Route::post('delete-record', 'deleteRecord')->name('delete.record');
 });

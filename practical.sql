@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2023 at 02:43 PM
+-- Generation Time: Apr 07, 2024 at 05:15 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.5
 
@@ -114,7 +114,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `gender`, `mobile`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Ram', 'ram@gmail.com', 'Male', '7987944989', NULL, '$2y$10$jFFJRHUH/M6XKRJmpq5F4.tJs0cU7W4jdDamgkW82uCABpHijWBru', NULL, '2023-03-31 05:23:22', '2023-03-31 06:44:08');
+(1, 'Ram', 'ram@gmail.com', 'Male', '7987944989', NULL, '$2y$10$jFFJRHUH/M6XKRJmpq5F4.tJs0cU7W4jdDamgkW82uCABpHijWBru', NULL, '2023-03-31 05:23:22', '2024-04-07 09:44:50'),
+(3, 'Rohit', 'rohit@gmail.com', 'Male', '7964464446', NULL, '$2y$10$6fr3esCpbYz.iRq48Gc8Je9BXmg6MrtradMAKvQ9/9L3Ks2Tpu63O', NULL, '2023-03-31 14:33:40', '2023-03-31 15:02:33'),
+(4, 'Sarita', 'sari@gmail.com', 'Female', '7855444785', NULL, '$2y$10$e1b61rYRwR4ylyH8zg9zruy2/D4V9fBeWDOZ47ddfOC5YkNVvjQXi', NULL, '2023-03-31 14:38:29', '2023-03-31 14:38:29'),
+(5, 'Mohan', 'mohan@gmail.com', 'Male', '9765464640', NULL, '$2y$10$xyt2Up/lqyZQUMR0Y2oqfOZ75bU6AnAqNhFnk0QXJsE3TdWf36g82', NULL, '2023-03-31 14:42:58', '2023-03-31 14:42:58'),
+(6, 'Abul', 'abul@gmail.com', 'Male', '9794646646', NULL, '$2y$10$PiThCrHnYIGU1z4cCvX4Wes27bo7mtHvDdmQU.SgZFCS/D5Wkequm', NULL, '2023-03-31 14:45:21', '2023-03-31 14:45:21'),
+(7, 'Puja', 'puja@gmail.com', 'Male', '9794649795', NULL, '$2y$10$THBm3/0mHwpBbMYoEVB7FeEyUujVDP1Ax/vMUIJr7cu3PCyHgT6vO', NULL, '2023-03-31 14:48:47', '2023-03-31 14:48:47');
 
 --
 -- Indexes for dumped tables
@@ -180,7 +185,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
